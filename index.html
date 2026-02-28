@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ruslan & Ayşə</title>
+    <title>Ruslan və Ayşənin Hekayəsi</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;1,700&family=Playfair+Display:ital@1&display=swap');
         
@@ -18,7 +18,7 @@
         .btn:hover { background: white; color: black; }
         
         #story-container { display: none; max-width: 600px; width: 90%; text-align: center; z-index: 5; }
-        .story-img { width: 100%; max-height: 300px; object-fit: cover; border-radius: 8px; filter: grayscale(100%); margin-bottom: 20px; box-shadow: 0 0 30px rgba(0,0,0,1); }
+        .story-img { width: 100%; max-height: 300px; object-fit: cover; border-radius: 8px; filter: grayscale(100%); margin-bottom: 20px; box-shadow: 0 0 30px rgba(0,0,0,1); transition: 1s ease; }
         .text-step { display: none; animation: fadeIn 1.5s ease; }
         p { font-size: 1.05rem; line-height: 1.8; font-style: italic; color: #b0b0b0; text-align: justify; margin-bottom: 20px; }
         .highlight { color: #8b0000; font-weight: bold; }
@@ -28,8 +28,8 @@
 </head>
 <body>
 
-    <audio id="sadMusic" loop>
-        <source src="https://www.chosic.com/wp-content/uploads/2021/07/Rainy-Day-Background-Music.mp3" type="audio/mpeg">
+    <audio id="sadMusic" loop preload="auto">
+        <source src="https://cdn.pixabay.com/audio/2022/11/22/audio_1069671609.mp3" type="audio/mpeg">
     </audio>
 
     <div id="hero">
@@ -61,7 +61,7 @@
         </div>
 
         <div id="step5" class="text-step">
-            <p style="text-align: center; font-size: 1.4rem; color: #fff; font-weight: bold;">
+            <p style="text-align: center; font-size: 1.4rem; color: #fff; font-weight: bold; font-style: normal;">
                 <span class="highlight">"Ayşə Buraxma Məni...<br>Qızlara Baxmayacam!"</span>
             </p>
             <button class="btn" onclick="location.reload()">Başa Qayıt</button>
@@ -71,14 +71,9 @@
     <script>
         function startStory() {
             var audio = document.getElementById('sadMusic');
-            // Musiqini aktivləşdiririk
-            audio.play().then(() => {
-                console.log("Musiqi çalınır");
-            }).catch(e => {
-                console.log("Musiqi üçün istifadəçi toxunuşu lazımdır");
-            });
+            audio.volume = 0.8;
+            audio.play();
             
-            // Giriş ekranını yox edirik
             document.getElementById('hero').style.opacity = '0';
             setTimeout(() => {
                 document.getElementById('hero').style.display = 'none';
@@ -93,7 +88,7 @@
         }
 
         function changeToFinal() {
-            // Son şəkli göstəririk
+            // Son şəkil burada dəyişir
             document.getElementById('mainImg').src = 'photo_2026-02-28_22-16-23.jpg';
             document.getElementById('mainImg').style.filter = 'grayscale(0%)'; 
             document.querySelectorAll('.text-step').forEach(s => s.style.display = 'none');
