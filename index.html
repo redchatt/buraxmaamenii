@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ruslan & Ayşə - Bir Sevgi Hekayəsi</title>
+    <title>Ruslanın Kədəri</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;1,700&family=Playfair+Display:ital@1&display=swap');
 
         body {
             margin: 0; padding: 0;
-            background-color: #050505;
+            background-color: #030305;
             color: #d1d1d1;
             font-family: 'Merriweather', serif;
             display: flex; justify-content: center; align-items: center;
@@ -21,20 +21,20 @@
             position: absolute;
             width: 100%; height: 100%;
             display: flex; flex-direction: column; justify-content: center; align-items: center;
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('Gemini_Generated_Image_9prpcb9prpcb9prp.png');
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('Gemini_Generated_Image_9prpcb9prpcb9prp.png');
             background-size: cover; background-position: center;
             text-align: center; z-index: 10;
-            transition: opacity 1.2s ease;
+            transition: opacity 2s ease;
         }
 
-        h1 { font-family: 'Playfair Display', serif; font-size: 3.5rem; color: #fff; margin-bottom: 30px; text-shadow: 0 0 20px rgba(0,0,0,0.8); }
+        h1 { font-family: 'Playfair Display', serif; font-size: 3.5rem; color: #fff; margin-bottom: 30px; }
 
         .btn {
-            padding: 15px 45px; font-size: 1rem; background: transparent;
-            color: white; border: 1px solid rgba(255,255,255,0.4);
-            cursor: pointer; transition: 0.5s; letter-spacing: 3px; text-transform: uppercase;
+            padding: 15px 45px; font-size: 0.9rem; background: transparent;
+            color: white; border: 1px solid rgba(255,255,255,0.3);
+            cursor: pointer; transition: 0.8s; letter-spacing: 3px; text-transform: uppercase;
         }
-        .btn:hover { background: white; color: black; border-color: white; transform: scale(1.05); }
+        .btn:hover { background: rgba(255,255,255,0.1); border-color: white; }
 
         /* Hekayə Paneli */
         #story-container {
@@ -43,19 +43,18 @@
 
         .story-img {
             width: 100%; max-height: 330px; object-fit: cover;
-            border-radius: 10px; filter: grayscale(100%);
-            margin-bottom: 25px; box-shadow: 0 15px 45px rgba(0,0,0,0.9);
-            transition: 1s ease;
+            border-radius: 5px; filter: grayscale(100%) contrast(120%);
+            margin-bottom: 25px; box-shadow: 0 0 50px rgba(0,0,0,1);
         }
 
-        .text-step { display: none; animation: fadeInText 2s ease; }
+        .text-step { display: none; animation: fadeInText 3s ease; }
         
         p { 
-            font-size: 1.15rem; line-height: 2; font-style: italic; 
-            color: #c0c0c0; text-align: justify; margin-bottom: 35px;
+            font-size: 1.1rem; line-height: 2; font-style: italic; 
+            color: #a0a0a0; text-align: justify; margin-bottom: 30px;
         }
 
-        .highlight { color: #ff4d4d; font-weight: bold; }
+        .highlight { color: #8b0000; font-weight: bold; }
 
         @keyframes fadeInText { from { opacity: 0; } to { opacity: 1; } }
     </style>
@@ -63,7 +62,7 @@
 <body>
 
     <audio id="sadMusic" loop>
-        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3" type="audio/mpeg">
+        <source src="https://www.chosic.com/wp-content/uploads/2021/07/Rainy-Day-Background-Music.mp3" type="audio/mpeg">
     </audio>
 
     <div id="hero">
@@ -76,7 +75,7 @@
 
         <div id="step1" class="text-step">
             <p><b>1. Giriş: Sonun Başlanğıcı</b><br>
-            "Hər şey bir saniyənin içində buz kəsdi. Telefonun ekranındakı o son cümlə Ruslanın dünyasını başına yıxdı: <span class="highlight">"Artıq yorulmuşam, məni axtarma."</span> Cavab yazmaq istədi, barmaqları titrədi, amma mesaj getmədi. Ayşə artıq yox idi."</p>
+            "Hər şey bir saniyənin içində buz kəsdi. Telefonun ekranındakı o son cümlə Ruslanın dünyasını başına yıxdı: <span class="highlight">"Artıq yorulmuşam, məni axtarma."</span> Cavab yazmaq istədi, amma mesaj getmədi. Ayşə artıq yox idi."</p>
             <button class="btn" onclick="nextStep(2)">Növbəti</button>
         </div>
 
@@ -99,7 +98,7 @@
         </div>
 
         <div id="step5" class="text-step">
-            <p style="text-align: center; font-size: 1.5rem; color: #fff;">
+            <p style="text-align: center; font-size: 1.4rem; color: #fff; line-height: 1.5;">
                 <span class="highlight">"Ayşə Buraxma Məni...<br>Qızlara Baxmayacam!"</span>
             </p>
             <button class="btn" onclick="location.reload()">Başa Qayıt</button>
@@ -108,13 +107,16 @@
 
     <script>
         function startStory() {
-            document.getElementById('sadMusic').play();
+            var music = document.getElementById('sadMusic');
+            music.volume = 0.6; // Musiqi səsi orta səviyyədə
+            music.play();
+            
             document.getElementById('hero').style.opacity = '0';
             setTimeout(() => {
                 document.getElementById('hero').style.display = 'none';
                 document.getElementById('story-container').style.display = 'block';
                 document.getElementById('step1').style.display = 'block';
-            }, 1200);
+            }, 2000);
         }
 
         function nextStep(n) {
@@ -123,11 +125,7 @@
         }
 
         function changeToFinal() {
-            // Şəkli dəyişirik
             document.getElementById('mainImg').src = 'photo_2026-02-28_22-16-23.jpg';
-            document.getElementById('mainImg').style.filter = 'grayscale(0%)'; // Finalda rəngli olsun istəsən
-            
-            // Mətni göstəririk
             document.querySelectorAll('.text-step').forEach(s => s.style.display = 'none');
             document.getElementById('step5').style.display = 'block';
         }
